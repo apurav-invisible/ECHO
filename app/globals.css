@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f7f6f2;
+  --color-white: #ffffff;
+  --color-ink: #20231f;
+  --color-sage: #8a9a83;
+  --color-sage-dark: #56664f;
+  --color-rule: #e7e6e0;
+  --color-quiet: #6b6d65;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+body { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-serif); }
+:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 3px; }
+.meta { font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-quiet); }
+.fade-in { animation: fade 200ms ease-out; }
+@keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+/* Pass 2: shared control dimensions */
+.btn { display: inline-flex; height: 3rem; align-items: center; gap: 0.5rem; padding: 0 1.5rem; font-family: var(--font-sans); font-size: 0.875rem; border: 1px solid transparent; transition: background-color 150ms, color 150ms, border-color 150ms; }
+.btn-primary { background: var(--color-ink); color: var(--color-paper); }
+.btn-primary:hover:not(:disabled) { background: var(--color-sage-dark); }
+.btn-primary:disabled { background: var(--color-rule); color: var(--color-quiet); cursor: not-allowed; }
+.btn-quiet { padding: 0 0.75rem 0 0; color: var(--color-quiet); text-underline-offset: 4px; }
+.btn-quiet:hover:not(:disabled) { color: var(--color-ink); text-decoration: underline; }
+.btn-quiet:disabled { opacity: 0.45; cursor: not-allowed; }
+.surface { width: 100%; border: 1px solid var(--color-rule); background: var(--color-white); transition: border-color 150ms; }
+.surface:focus { border-color: var(--color-ink); }
+.surface::placeholder { color: var(--color-quiet); }
